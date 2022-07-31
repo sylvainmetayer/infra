@@ -1,0 +1,11 @@
+---
+collections:
+  - name: ./sylvainmetayer-workstation-1.0.0.tar.gz
+    type: file
+roles:
+  - src: geerlingguy.mysql
+    version: 3.5.0
+  - src: geerlingguy.certbot
+    version: 5.0.1
+  - src: geerlingguy.docker
+    version: 4.2.4
