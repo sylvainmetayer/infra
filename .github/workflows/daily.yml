@@ -1,0 +1,22 @@
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch: {}
+
+name: "Daily"
+
+jobs:
+  checkAsdfUpdatesTerraform:
+    name: "ASDF Update terraform"
+
+    uses: ./.github/workflows/part_asdf_update.yml
+    with:
+      plugin: "terraform"
+      constraint: "1"
+
+  checkAsdfUpdatesDirenv:
+    name: "ASDF Update direnv"
+
+    uses: ./.github/workflows/part_asdf_update.yml
+    with:
+      plugin: "direnv"
