@@ -16,9 +16,5 @@
       - jq
       - gnupg2
       - nginx
+      - fzf
     state: present
-
-- name: Set timezone to Europe/Paris
-  become: true
-  timezone:
-    name: Europe/Paris

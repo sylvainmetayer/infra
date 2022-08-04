@@ -2,3 +2,4 @@
 - hosts: setup
   roles:
     - user
+    - setup
