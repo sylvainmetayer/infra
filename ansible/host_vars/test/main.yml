@@ -1,0 +1,7 @@
+---
+docker_install_compose: true
+docker_compose_version: "1.29.2"
+docker_users:
+  - "{{ ansible_user_id }}"
+
+network_ipv6_enable: false

@@ -1,7 +1,8 @@
 ---
 collections:
-  - name: ./sylvainmetayer-workstation-1.0.0.tar.gz
-    type: file
+  - name: sylvainmetayer.workstation
+    version: 1.0.0
+  - name: devsec.hardening
 roles:
   - src: geerlingguy.mysql
     version: 3.5.0

@@ -1,0 +1,20 @@
+---
+- hosts: test
+  pre_tasks:
+    - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
+      become: true
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 3600
+  roles:
+    - role: geerlingguy.docker
+      become: true
+    - role: sylvainmetayer.workstation.hostname
+      become: true
+    - role: devsec.hardening.ssh_hardening
+      become: true
+    - role: setup
+      become: true
+    - role: devsec.hardening.nginx_hardening
+      become: true
+

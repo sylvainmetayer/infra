@@ -1,10 +1,21 @@
 ---
 all:
   hosts:
-    setup:
+    test_setup:
       ansible_python_interpreter: /usr/bin/python3
       ansible_port: 22
       ansible_host: ${server_ip}
       ansible_user: root
       ansible_ssh_private_key_file: ${path}/key.pub
-
+    test:
+      ansible_python_interpreter: /usr/bin/python3
+      ansible_port: 22
+      ansible_host: ${server_ip}
+      ansible_user: test
+      ansible_ssh_private_key_file: ${path}/key.pub
+      # until https://github.com/dev-sec/ansible-collection-hardening/issues/557 is resolved
+      ansible_ssh_transfer_method: piped
+  children:
+    setup:
+      hosts:
+        test_setup

@@ -1,0 +1,24 @@
+---
+- name: "Install basic packages"
+  become: true
+  ansible.builtin.package:
+    name:
+      - git
+      - git-lfs
+      - make
+      - unzip
+      - htop
+      - wget
+      - curl
+      - tmux
+      - vim
+      - rsync
+      - jq
+      - gnupg2
+      - nginx
+    state: present
+
+- name: Set timezone to Europe/Paris
+  become: true
+  timezone:
+    name: Europe/Paris
