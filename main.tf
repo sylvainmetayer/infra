@@ -1,10 +1,18 @@
 # provider "healthchecksio" {}
 # provider "uptimerobot" {}
-
-# provider "gandi" {}
-
-
+provider "gandi" {}
 provider "hcloud" {}
+
+# TODO Use vault instead of yaml decode
+# provider "ansiblevault" {}
+
+locals {
+  data = yamldecode(file("ansible/secrets.vault.yml"))
+}
+
+data "gandi_domain" "zone" {
+  name = local.data["root_domain"]
+}
 
 # VPS on Hetzner
 module "gibbs" {
@@ -14,4 +22,11 @@ module "gibbs" {
 module "ansible_inventory" {
   source    = "./modules/ansible_inventory"
   server_ip = module.gibbs.server_ip
+}
+
+module "rss" {
+  source = "./modules/rss"
+  domain_id = data.gandi_domain.zone.id
+  server_ip = module.gibbs.server_ip
+  subdomain = local.data["rss_subdomain"]
 }

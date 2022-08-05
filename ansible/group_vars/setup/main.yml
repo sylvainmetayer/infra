@@ -1,7 +1,3 @@
 ---
-user_name: test
-user_password: test
-user_ssh_key: "{{ playbook_dir }}/../../key.pub"
-
 hostname_name: test
 hostname_fqdn: test.sylvain.dev

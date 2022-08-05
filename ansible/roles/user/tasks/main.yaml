@@ -16,3 +16,14 @@
     user: "{{ user_name }}"
     state: present
     key: "{{ lookup('file', user_ssh_key) }}"
+
+- name: Ensure required folder exists
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0700"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
+  with_items:
+    - "/home/{{ user_name }}/.ssh"
+    - "/home/{{ user_name }}/.config/systemd/user/"

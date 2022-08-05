@@ -2,25 +2,23 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/go-gandi/gandi" {
-  version     = "2.0.1"
-  constraints = "~> 2.0.0"
+  version     = "2.1.0"
+  constraints = "< 3.0.0"
   hashes = [
-    "h1:FjznojQCnUAwFjaQv8YNBr+VQtSlT7CzS13I+sD66kg=",
-    "h1:IoR2JM08h77holBjPfhAl30rDpKTdWfAkk00HvG9X/s=",
-    "h1:Wm6DH3siL55JjcfLTwxr0cy3z6kNADOo7HV0ue+YRbE=",
-    "zh:120e59e52d1dc659a3b3be5a32edc43404f0713be30f03502a43fcae528548e4",
-    "zh:199d314f4a7a71dfed4a1766c378654514993180886a4062ae1c169adc28e99b",
-    "zh:3d78b552bb11a6d77dcc5f08f9477b234cd113c58c052f1ad3e98f3c3b6b4762",
-    "zh:48c75e3d7bba7f65ae2b0e3d046ec5470c97b42ee5a97089cc0479afe9bf8fc4",
-    "zh:511634aa419fea76aed2c74f81b90abad01587562ff3fa86aacfaa46c738f0b9",
-    "zh:59b0f060c8d385fdf4b83dcffd274470d8dc81654fe309eb0bb8d019f78092ad",
-    "zh:64277e9982b8c84e7d318fbeea046449fedb6f1891139f5ba37201badf2e8221",
-    "zh:6440b9904344b894f4ed8d27a3b091d4d5ce3707d9827b554f31b9aacca25d39",
-    "zh:9356408750becd9e710cc20dd24ee07d6e38fe7a904b01df74b4bfa78cf764d4",
-    "zh:9d894a60e2411eefc651a902a854cd7cee6c1e9b2ead59031f0cc9170d0d55c6",
-    "zh:c0be4280f06c9d61eeb0de5dc91cd4234b523592b7f83d8eaaf76d88755c01d6",
-    "zh:c27b1d4b7bbb263e3ea0f829066fe081021d2eea48a4c578a71acca97e779809",
-    "zh:d9c1ff08b062ac8ef429c8424bfb6aa3634909b2d020b138e820c59948206f55",
+    "h1:JuvHmPzqifAdo7vqSB2HSbBi2IBiafYLJZAoeYu1b9Y=",
+    "zh:1223895fc52781b737e4510f10e9b5654ca1cb141dfe2bf776bdc319b933223b",
+    "zh:1f3f9df2be1937b19ce068080f026db27df77d841d966a154edc2d4ef8579186",
+    "zh:6382c0f8f3658d24fda4256a59d17ccce3af23be634550163b395e8be5a8c29b",
+    "zh:65fc774f3ebca984113a65f2942e4863551cba8c9ff822767b8bae56330e8428",
+    "zh:67511c8004a116202555980be1de89e61493c2db61b19018c92a8c32853fa3f5",
+    "zh:6a08616cbfa3ed59003f3b8ccbd29831235c7dd8d124850151c25ca670154716",
+    "zh:772b212b59b8cb9ccb0b2d0006e45f93c264c7bfed325941fef8e35ad81e3178",
+    "zh:8724a2cdf3613caf45f3b9dba75fb0cec96a12ef7672bc82e62e57168e84d96d",
+    "zh:8eef8ca62214177b52a081c1a643fe2aa89c867da8b066470fe13c38f922d3e3",
+    "zh:95c115faa29f6fa8d6fdf35e3a2f15d08d241e520a4ea2a41c2efd1785c36fda",
+    "zh:a2c14cac3d1497852a0f6c8febfe35084f8f98c606853ff0bea63916de78d1c3",
+    "zh:bb39199b5de77394529b433fa47281110977629f40d10b884fa4c589505e2789",
+    "zh:f3cc92e511e3d28425db80f2b8d2fb6b32a02aaae7b06065ed55b0bb204c040d",
   ]
 }
 
@@ -81,5 +79,24 @@ provider "registry.terraform.io/hetznercloud/hcloud" {
     "zh:d01600e67abc7ce7c59bc8567b7a650bc5ce817723a354f401a803d421610641",
     "zh:f3487f1c49145b560fd19c8c681cb9eaaa85fc3700ea9b675f649f5f5d8b1e3c",
     "zh:f5257b83287156effecb0f43fe80b6cbcc02c89f35ceda1b845d4e3dcf757dca",
+  ]
+}
+
+provider "registry.terraform.io/meilleursagents/ansiblevault" {
+  version     = "2.2.0"
+  constraints = "< 3.0.0"
+  hashes = [
+    "h1:BdAWPYZ+cwkGuc9Hy0zZfyvbRL9f3naXpcUaOnoZee8=",
+    "zh:06faf88f2a6f2e9aabadb0d50565f4804636039042d37984463f0ca647f52189",
+    "zh:15053cceec8b24d9b62598e9e6860607603c2ecc7871705720a0753ef297d79f",
+    "zh:525f261f35d58151b4c51301cc1ae98a592c9b3400449361a91f2d84c467e2ac",
+    "zh:8bfe3b2c2b975792987d0642e8525efbf436ae08b1cebb1fa266b8954cb1915e",
+    "zh:93a943b494b0f70ef644334bf7646bf203ca087873385ab8ff89d406b9448771",
+    "zh:c651248189d297321a48feb775907de0ba2b9a100cb35f7364357b0af0e55931",
+    "zh:ccbee95f3c264c663fcddac8c8c921ec9f4fde95f15196838a73a9bf215a4020",
+    "zh:d3226f7b3a3013fceeef3392f54708b976daa0f43767bc24ff8c420c8a48a1a9",
+    "zh:f236d34596a51f64163eb5d13c3bcea4e10023f7e65f777b7267c463c427aad2",
+    "zh:f79f848b9c4b67879c2c25f2ef5b654eaafcfd7568f442eea2566bb580519c4f",
+    "zh:fbe2363c1c6a32df6443e650b53b5004a4d6f9431d23935ed98c500bed1552bd",
   ]
 }

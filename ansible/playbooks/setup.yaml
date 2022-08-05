@@ -1,5 +1,11 @@
 ---
 - hosts: setup
+  pre_tasks:
+    - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
+      become: true
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 3600
   roles:
     - user
     - setup

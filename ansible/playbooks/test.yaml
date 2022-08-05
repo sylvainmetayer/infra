@@ -6,7 +6,10 @@
       ansible.builtin.apt:
         update_cache: yes
         cache_valid_time: 3600
+      tags: always
   roles:
+    - role: user
+      become: true
     - role: geerlingguy.docker
       become: true
     - role: sylvainmetayer.workstation.commons
@@ -16,4 +19,10 @@
       become: true
     - role: andrewrothstein.starship
     - role: devsec.hardening.nginx_hardening
+      become: true
+    - role: geerlingguy.mysql
+      become: true
+    - role: rss
+      tags: rss
+    - role: geerlingguy.certbot
       become: true

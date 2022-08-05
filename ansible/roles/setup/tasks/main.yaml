@@ -17,4 +17,5 @@
       - gnupg2
       - nginx
       - fzf
+      - apt-transport-https
     state: present
