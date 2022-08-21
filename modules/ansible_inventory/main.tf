@@ -2,7 +2,7 @@ data "template_file" "inventory" {
   template = file("${path.module}/template/inventory.tftpl")
   vars = {
     server_ip = var.server_ip
-    path = path.root
+    path      = path.root
   }
 }
 

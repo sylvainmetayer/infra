@@ -12,3 +12,4 @@
 - https://github.com/MeilleursAgents/terraform-provider-ansiblevault
 - healthchecks
 - docker logs to journalctl
+- https://github.com/viczem/ansible-keepass

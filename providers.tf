@@ -18,10 +18,10 @@ terraform {
       source  = "go-gandi/gandi"
       version = "<3.0.0"
     }
-    # healthchecksio = {
-    #   source  = "kristofferahl/healthchecksio"
-    #   version = "~> 1.9.0"
-    # }
+    healthchecksio = {
+      source  = "kristofferahl/healthchecksio"
+      version = "<2.0.0"
+    }
     # uptimerobot = {
     #   source = "louy/uptimerobot"
     # }

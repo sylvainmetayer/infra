@@ -1,7 +1,7 @@
-# provider "healthchecksio" {}
 # provider "uptimerobot" {}
 provider "gandi" {}
 provider "hcloud" {}
+provider "healthchecksio" {}
 
 # TODO Use vault instead of yaml decode
 # provider "ansiblevault" {}
@@ -25,8 +25,17 @@ module "ansible_inventory" {
 }
 
 module "rss" {
-  source = "./modules/rss"
+  source    = "./modules/rss"
   domain_id = data.gandi_domain.zone.id
   server_ip = module.gibbs.server_ip
   subdomain = local.data["rss_subdomain"]
+}
+
+data "healthchecksio_channel" "signal" {
+  kind = "signal"
+}
+
+module "android" {
+  source                 = "./modules/android"
+  healthcheck_channel_id = data.healthchecksio_channel.signal.id
 }

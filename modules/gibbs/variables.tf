@@ -9,11 +9,11 @@ variable "region" {
 }
 
 variable "server_type" {
-  type = string
+  type    = string
   default = "cx21"
 }
 
 variable "server_image" {
-  type = string
+  type    = string
   default = "debian-11"
 }
