@@ -22,8 +22,8 @@
     path: "{{ item }}"
     state: directory
     mode: "0700"
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_gid }}"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
   with_items:
     - "/home/{{ user_name }}/.ssh"
     - "/home/{{ user_name }}/.config/systemd/user/"

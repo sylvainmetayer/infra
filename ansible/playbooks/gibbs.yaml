@@ -1,5 +1,5 @@
 ---
-- hosts: test
+- hosts: gibbs
   pre_tasks:
     - name: Only run "update_cache=yes" if the last one is more than 3600 seconds ago
       become: true
@@ -10,6 +10,7 @@
   roles:
     - role: user
       become: true
+      tags: user
     - role: geerlingguy.docker
       become: true
     - role: sylvainmetayer.workstation.commons

@@ -7,6 +7,6 @@
 terraform init
 terraform login
 terraform apply
-ansible-playbook ansible/playbooks/setup.yaml -e @ansible/secrets.vault.yml
-ansible-playbook ansible/playbooks/test.yaml -K -e @ansible/secrets.vault.yml
+ansible-playbook ansible/playbooks/setup.yaml
+ansible-playbook ansible/playbooks/test.yaml -K
 ```

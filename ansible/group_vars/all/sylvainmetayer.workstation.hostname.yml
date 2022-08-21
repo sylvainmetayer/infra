@@ -1,0 +1,3 @@
+---
+hostname_name: gibbs
+hostname_fqdn: "{{ lookup('viczem.keepass.keepass', 'infra/ansible/gibbs/ssh-user', 'url') }}"

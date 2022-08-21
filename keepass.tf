@@ -10,3 +10,7 @@ data "keepass_entry" "hetzner_token" {
 data "keepass_entry" "gandi_api_key" {
   path = "Racine/infra/gandi-api-key"
 }
+
+data "keepass_entry" "rss_domain" {
+  path = "Racine/infra/ansible/rss-domain"
+}

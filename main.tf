@@ -13,17 +13,15 @@ provider "healthchecksio" {
   api_key = data.keepass_entry.healthcheck_api_key.password
 }
 
-locals {
-  data = yamldecode(file("ansible/secrets.vault.yml"))
-}
-
 data "gandi_domain" "zone" {
-  name = local.data["root_domain"]
+  name = "sylvain.dev"
 }
 
 # VPS on Hetzner
 module "gibbs" {
   source = "./modules/gibbs"
+  domain_id = data.gandi_domain.zone.id
+  subdomain = "gibbs.demo"
 }
 
 module "ansible_inventory" {
@@ -35,7 +33,7 @@ module "rss" {
   source    = "./modules/rss"
   domain_id = data.gandi_domain.zone.id
   server_ip = module.gibbs.server_ip
-  subdomain = local.data["rss_subdomain"]
+  subdomain = data.keepass_entry.rss_domain.url
 }
 
 data "healthchecksio_channel" "signal" {
@@ -45,4 +43,8 @@ data "healthchecksio_channel" "signal" {
 module "android" {
   source                 = "./modules/android"
   healthcheck_channel_id = data.healthchecksio_channel.signal.id
+}
+
+output "gibbs_ip" {
+  value = module.gibbs.server_ip
 }

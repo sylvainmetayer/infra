@@ -54,3 +54,5 @@ ansible/facts
 ansible/inventory.yml
 
 .idea/
+
+vault.secret
