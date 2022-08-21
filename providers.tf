@@ -22,6 +22,10 @@ terraform {
       source  = "kristofferahl/healthchecksio"
       version = "<2.0.0"
     }
+    keepass = {
+      source  = "iSchluff/keepass"
+      version = "<1.0.0"
+    }
     # uptimerobot = {
     #   source = "louy/uptimerobot"
     # }

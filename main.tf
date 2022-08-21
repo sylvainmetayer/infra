@@ -1,10 +1,17 @@
 # provider "uptimerobot" {}
-provider "gandi" {}
-provider "hcloud" {}
-provider "healthchecksio" {}
+provider "keepass" {}
 
-# TODO Use vault instead of yaml decode
-# provider "ansiblevault" {}
+provider "gandi" {
+  key = data.keepass_entry.gandi_api_key.password
+}
+
+provider "hcloud" {
+  token = data.keepass_entry.hetzner_token.password
+}
+
+provider "healthchecksio" {
+  api_key = data.keepass_entry.healthcheck_api_key.password
+}
 
 locals {
   data = yamldecode(file("ansible/secrets.vault.yml"))

@@ -13,3 +13,4 @@
 - healthchecks
 - docker logs to journalctl
 - https://github.com/viczem/ansible-keepass
+- https://github.com/iSchluff/terraform-provider-keepass
