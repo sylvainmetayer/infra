@@ -26,6 +26,10 @@ terraform {
       source  = "iSchluff/keepass"
       version = "<1.0.0"
     }
+    scaleway = {
+      source  = "scaleway/scaleway"
+      version = "<3.0.0"
+    }
     # uptimerobot = {
     #   source = "louy/uptimerobot"
     # }

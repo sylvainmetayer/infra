@@ -8,5 +8,5 @@ terraform init
 terraform login
 terraform apply
 ansible-playbook ansible/playbooks/setup.yaml
-ansible-playbook ansible/playbooks/gibbs.yaml -K
+ansible-playbook ansible/playbooks/gibbs.yaml
 ```
