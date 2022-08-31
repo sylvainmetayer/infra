@@ -1,5 +1,5 @@
 ---
-mysql_root_password: "{{ lookup('viczem.keepass.keepass', 'infra/ansible/gibss/mysql-root', 'password') }}"
+mysql_root_password: "{{ lookup('viczem.keepass.keepass', 'infra/ansible/gibbs/mysql-root', 'password') }}"
 mysql_databases:
   - name: "{{ lookup('viczem.keepass.keepass', 'infra/ansible/rss-db-credentials', 'custom_properties', 'db_name') }}"
     encoding: utf8mb4
