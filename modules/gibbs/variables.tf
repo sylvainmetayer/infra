@@ -17,11 +17,3 @@ variable "server_image" {
   type    = string
   default = "debian-11"
 }
-
-variable "subdomain" {
-  type = string
-}
-
-variable "domain_id" {
-  type = string
-}

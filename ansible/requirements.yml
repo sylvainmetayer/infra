@@ -1,9 +1,11 @@
 ---
 collections:
   - name: sylvainmetayer.workstation
-    version: 1.0.2
+    version: 1.2.8
   - name: devsec.hardening
+    version: 8.4.0
   - name: viczem.keepass
+    version: 0.7.3
 roles:
   - src: geerlingguy.mysql
     version: 3.5.1

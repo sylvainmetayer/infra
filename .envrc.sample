@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-layout python3
 
 export KEEPASS_PASSWORD=password
 export KEEPASS_DATABASE=~/kDrive/keepass/selfhosted.kdbx

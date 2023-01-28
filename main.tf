@@ -5,8 +5,6 @@ data "gandi_domain" "zone" {
 # VPS on Hetzner
 module "gibbs" {
   source    = "./modules/gibbs"
-  domain_id = data.gandi_domain.zone.id
-  subdomain = "gibbs.demo"
 }
 
 module "ansible_inventory" {
@@ -14,11 +12,14 @@ module "ansible_inventory" {
   server_ip = module.gibbs.server_ip
 }
 
-module "rss" {
-  source    = "./modules/rss"
-  domain_id = data.gandi_domain.zone.id
-  server_ip = module.gibbs.server_ip
-  subdomain = data.keepass_entry.rss_domain.url
+resource "gandi_livedns_record" "rss" {
+  zone = data.gandi_domain.zone.id
+  name = data.keepass_entry.rss_domain.url
+  type = "A"
+  ttl  = 300
+  values = [
+    module.gibbs.server_ip
+  ]
 }
 
 data "healthchecksio_channel" "signal" {
