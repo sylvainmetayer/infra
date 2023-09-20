@@ -18,4 +18,5 @@
       - nginx
       - fzf
       - apt-transport-https
+      #- docker-compose-plugin
     state: present
