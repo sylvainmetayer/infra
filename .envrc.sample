@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-export KEEPASS_PASSWORD=password
-export KEEPASS_DATABASE=~/kDrive/keepass/selfhosted.kdbx
