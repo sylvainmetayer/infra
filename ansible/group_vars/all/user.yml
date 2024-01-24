@@ -1,4 +1,0 @@
----
-user_name: "{{ lookup('viczem.keepass.keepass', 'infra/ansible/gibbs/ssh-user', 'username') }}"
-user_password: "{{ lookup('viczem.keepass.keepass', 'infra/ansible/gibbs/ssh-user', 'password') }}"
-user_ssh_key: "{{ playbook_dir }}/../../key.pub"
