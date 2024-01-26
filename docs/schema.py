@@ -10,7 +10,7 @@ from diagrams.custom import Custom
 from diagrams.generic.blank import Blank
 from diagrams.generic.device import Mobile
 from diagrams.generic.network import Firewall, Subnet
-from diagrams.generic.os import LinuxGeneral, Raspbian
+from diagrams.generic.os import LinuxGeneral, Raspbian, RedHat, Windows
 from diagrams.generic.storage import Storage
 from diagrams.oci.compute import VM
 from diagrams.oci.connectivity import DNS, VPN
@@ -20,7 +20,8 @@ from diagrams.onprem.client import Client, User, Users
 from diagrams.onprem.compute import Server
 from diagrams.onprem.container import Docker
 from diagrams.onprem.iac import Ansible, Terraform
-from diagrams.onprem.network import Nginx
+from diagrams.onprem.network import Nginx, Traefik
+from diagrams.saas.cdn import Cloudflare
 from diagrams.saas.chat import Telegram
 from diagrams.saas.filesharing import Nextcloud
 
@@ -28,8 +29,8 @@ main_email_domain = 'redacted'
 
 with Diagram("Services", filename="services", show=False, outformat=["pdf", "png"], direction='TB', strict=True):
     with Cluster('Home'):
-        windows = Client('Windows')
-        fedora = Client('Fedora')
+        windows = Windows('Windows')
+        fedora = RedHat('Fedora')
         with Cluster('Internal Access'):
             pi3 = LinuxGeneral('pi 3b+')
             # pi4 = LinuxGeneral('pi 4')
@@ -41,7 +42,7 @@ with Diagram("Services", filename="services", show=False, outformat=["pdf", "png
             vpn = VPN('vpn')
 
     with Cluster('Cloudflare'):
-        agent_ready = Server('agent-ready.pages.dev SSG')
+        agent_ready = Cloudflare('agent-ready pages')
 
     with Cluster('Gandi DNS'):
         sylvain_dev_dns = DNS('sylvain.dev')
@@ -54,8 +55,12 @@ with Diagram("Services", filename="services", show=False, outformat=["pdf", "png
         terraform_bucket = S3('Terraform')
         backup_bucket = S3('Backup bucket')
 
+    with Cluster('Backblaze'):
+        backup_bucket_backblaze = S3('B2 Cloud Storage')
+
     with Cluster('Infomaniak'):
         kdrive = Custom("", "./img/kdrive.png")
+        keepass = Custom("", "./img/KeePassXC.png")
         # kdrive = Nextcloud('kDrive')
         with Cluster('Email'):
             main_email = Email(main_email_domain)
@@ -70,20 +75,23 @@ with Diagram("Services", filename="services", show=False, outformat=["pdf", "png
 
     hetzner = Cluster('Hetzner')
     with hetzner:
-        firewall = Firewall('Hetzner firewall')
         backup_storage_box = Storage('StorageBox Backup')
-        donald = Server('donald')
-        with Cluster('donald VPS'):
-            nginx = Nginx('NGINX')
-            containers = [
-                Nextcloud('Nextcloud'),
-                Docker('Monica CRM'),
-                Docker('FreshRSS'),
-                Docker('Betisier-TP')
-            ]
+        with Cluster('Project'):
+            firewall = Firewall('Hetzner firewall')
+            donald = Server('donald')
+            with Cluster('donald VPS'):
+                reverse_proxy = Traefik('Reverse proxy')
+                containers = [
+                    Nextcloud('Nextcloud'),
+                    Docker('Monica CRM'),
+                    Docker('FreshRSS'),
+                    Docker('Betisier-TP')
+                ]
 
-    deadman_switch = Telegram("deadmansswitch.net Bot")
-    healthcheck_signal = Telegram("healthchecks.io Signal bot")
+    deadman_switch = Server("deadmansswitch.net")
+    telegram_account = Telegram('Telegram')
+    signal_account = Custom("", "./img/signal.png")
+    healthcheck = Server("healthchecks.io")
 
     simple_login = Custom("", "./img/SimpleLogin.png")
 
@@ -109,10 +117,12 @@ with Diagram("Services", filename="services", show=False, outformat=["pdf", "png
     devices - Edge(label='Sync') - kdrive
     phone >> vpn
 
+    deadman_switch << telegram_account
+
     # devices >> deadman_switch
     deadman_switch >> Edge(label='Notify if no response') >> emergency_contacts
 
-    backup = [backup_bucket, backup_storage_box]
+    backup = [backup_bucket, backup_storage_box, backup_bucket_backblaze]
 
     terraform >> terraform_bucket
     #terraform >> backup
@@ -122,9 +132,10 @@ with Diagram("Services", filename="services", show=False, outformat=["pdf", "png
 
     [app_dns, sylvain_dev_dns] >> firewall
     aliases_emails >> simple_login >> Edge(label='Forward') >> main_email
-    firewall >> donald >> nginx
-    nginx >> containers
-    donald >> backup >> healthcheck_signal >> Edge(label='Notify if failure') >> phone
+    firewall >> donald >> reverse_proxy
+    reverse_proxy >> containers
+    kdrive >> keepass
+    donald >> backup >> healthcheck >> Edge(label='Notify if failure') >> signal_account >> phone
     donald - lets_encrypt - [app_dns, sylvain_dev_dns]
     sylvain_dev_dns >> eleventy_website
     vpn - restricted_access
