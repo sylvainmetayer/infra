@@ -56,3 +56,10 @@ ansible/inventory.yml
 .idea/
 
 vault.secret
+
+
+
+###################
+
+# backend access and secret key
+infrastructure/terraform/.envrc
