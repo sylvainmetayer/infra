@@ -18,13 +18,19 @@
   roles:
     - role: geerlingguy.docker
       become: true
+      tags: setup
     - role: sylvainmetayer.workstation.commons
+      tags: setup
     - role: sylvainmetayer.workstation.hostname
+      tags: setup
       become: true
     - role: devsec.hardening.ssh_hardening
+      tags: setup
       become: true
     - role: andrewrothstein.starship
-    - role: devsec.hardening.nginx_hardening
+      tags: setup
+    - role: nextcloud
+      tags: app
+    - role: geerlingguy.certbot
       become: true
-#    - role: geerlingguy.certbot
-#      become: true
+      tags: app
