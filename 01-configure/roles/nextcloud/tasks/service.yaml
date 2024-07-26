@@ -1,18 +1,18 @@
 ---
-- name: Copy rss service
+- name: Copy nextcloud service
   template:
-    src: ./templates/rss.service.j2
-    dest: ~/.config/systemd/user/rss.service
+    src: ./templates/nextcloud.service.j2
+    dest: ~/.config/systemd/user/nextcloud.service
     group: "{{ ansible_user_gid }}"
     owner: "{{ ansible_user_uid }}"
     mode: "0644"
 
-- name: Make sure rss service is running
+- name: Make sure nextcloud service is running
   ansible.builtin.systemd:
     # state: started
     state: stopped
     daemon_reload: true
-    name: rss
+    name: nextcloud
     scope: user
     # enabled: true
     enabled: false

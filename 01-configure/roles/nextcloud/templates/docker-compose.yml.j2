@@ -1,16 +1,38 @@
 ---
-version: "2.1"
 services:
   nextcloud:
     image: lscr.io/linuxserver/nextcloud:version-29.0.3
     container_name: nextcloud
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID={{ ansible_user_uid }}
+      - PGID={{ ansible_user_gid }}
       - TZ=Europe/Paris
+
+      # https://github.com/linuxserver/docker-mods/tree/nextcloud-memories
+      - DOCKER_MODS=linuxserver/mods:nextcloud-memories
     volumes:
       - ./config:/config
       - ./data:/data
     ports:
-      - '127.0.0.1:9003:80'
-    restart: 'on-failure'
+      - "127.0.0.1:{{ nextcloud_local_port }}:80"
+
+  db:
+    container_name: db
+    restart: unless-stopped
+    image: mariadb:lts
+    environment:
+      MYSQL_ROOT_PASSWORD: {{ nextcloud_db_password }}
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: {{ nextcloud_db_password }}
+    volumes:
+      - ./db_data:/var/lib/mysql
+
+  cache:
+    image: redis:bookworm
+    container_name: redis
+    command: redis-server --requirepass {{ nextcloud_redis_password }}
+    environment:
+      - REDIS_PASSWORD={{ nextcloud_redis_password }}
+    volumes:
+      - ./redis:/data

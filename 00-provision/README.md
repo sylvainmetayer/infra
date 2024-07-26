@@ -2,6 +2,7 @@
 
 ```shell
 sops exec-env secrets.sops.yaml "tofu init"
+sops exec-env secrets.sops.yaml "tofu apply"
 ```
 
 ## Lock providers
