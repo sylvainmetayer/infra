@@ -9,6 +9,8 @@ collections:
 roles:
   - src: geerlingguy.certbot
     version: 5.0.1
+  - src: escalate.swap
+    version: v2.0.0
   - src: geerlingguy.docker
     version: 7.3.0
   - src: andrewrothstein.starship

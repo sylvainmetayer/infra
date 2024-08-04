@@ -1,0 +1,11 @@
+---
+root_domain: sylvain.cloud
+# Will be dynamically defined be apps roles
+certbot_certs: []
+
+swap_enabled: true
+swap_config:
+  CONF_SWAPSIZE: 4096
+  CONF_SWAPFILE: /var/swap
+  CONF_MAXSWAP: 4096
+  # CONF_SWAPFACTOR: 2
