@@ -36,6 +36,7 @@
         state: present
 
     - name: Create user
+      become: true
       ansible.builtin.user:
         name: "sylvain"
         shell: /bin/bash
