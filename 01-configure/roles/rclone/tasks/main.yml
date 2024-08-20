@@ -5,6 +5,15 @@
     name: rclone
     state: present
 
+- name: Ensure Rclone app folder exists
+  become: true
+  file:
+    mode: "0700"
+    path: "{{ rclone_base_path }}"
+    state: directory
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
+
 - name: Template rclone script
   template:
     src: ./templates/rclone.sh.j2

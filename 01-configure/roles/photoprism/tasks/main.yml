@@ -1,6 +1,4 @@
 ---
-- import_tasks: rclone.yaml
-
 - name: Ensure Photoprism app folder exists
   become: true
   file:
@@ -12,6 +10,14 @@
   with_items:
     - "{{ photoprism_base_path }}"
     - "{{ photoprism_base_path }}/originals"
+
+- name: Add restic profile
+  tags: backup
+  ansible.builtin.blockinfile:
+    path: ~/.config/resticprofile/profiles.yaml
+    prepend_newline: true
+    block: "{{ lookup('ansible.builtin.template', 'templates/resticprofile.yaml') }}"
+    marker: "# {mark} photoprism ANSIBLE MANAGED"
 
 - name: Template docker-compose configuration
   template:

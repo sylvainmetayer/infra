@@ -1,5 +1,5 @@
 resource "hcloud_server" "nextcloud" {
-  labels = local.labels
+  labels      = local.labels
   name        = "finch"
   image       = "debian-11"
   server_type = "cx32"
@@ -9,6 +9,6 @@ resource "hcloud_server" "nextcloud" {
     ipv4_enabled = true
     ipv6_enabled = true
   }
-  ssh_keys     = [hcloud_ssh_key.keepassxc.id]
+  ssh_keys = [hcloud_ssh_key.keepassxc.id]
   firewall_ids = [hcloud_firewall.firewall.id]
 }

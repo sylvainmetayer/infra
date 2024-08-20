@@ -1,7 +1,7 @@
 ---
 services:
   nextcloud:
-    image: lscr.io/linuxserver/nextcloud:version-29.0.3
+    image: lscr.io/linuxserver/nextcloud:version-29.0.5
     container_name: nextcloud
     environment:
       - PUID={{ ansible_user_uid }}
@@ -9,7 +9,7 @@ services:
       - TZ=Europe/Paris
 
       # https://github.com/linuxserver/docker-mods/tree/nextcloud-memories
-      - DOCKER_MODS=linuxserver/mods:nextcloud-memories
+      #- DOCKER_MODS=linuxserver/mods:nextcloud-memories
     volumes:
       - ./config:/config
       - ./data:/data
