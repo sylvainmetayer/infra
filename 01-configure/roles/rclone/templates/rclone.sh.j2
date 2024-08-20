@@ -6,4 +6,4 @@ if [[ "`pidof -x $(basename $0) -o %PPID`" ]]; then
   exit
 fi
 
-rclone sync -v --fast-list kDrive:// {{ photoprism_base_path }}/originals
+rclone sync -v --fast-list kDrive:// {{ rclone_base_path }}

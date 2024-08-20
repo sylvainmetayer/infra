@@ -8,6 +8,6 @@ photoprism_admin_password: "password"
 photoprism_db_user: "password"
 photoprism_db_password: "password"
 
-rclone_password: ""
-rclone_user: ""
-rclone_url: ""
+photoprism_healthcheck_url: "REPLACE_ME"
+
+rclone_base_path: ""

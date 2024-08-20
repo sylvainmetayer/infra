@@ -8,6 +8,14 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_gid }}"
 
+- name: Add restic profile
+  tags: backup
+  ansible.builtin.blockinfile:
+    path: ~/.config/resticprofile/profiles.yaml
+    prepend_newline: true
+    block: "{{ lookup('ansible.builtin.template', 'templates/resticprofile.yaml') }}"
+    marker: "# {mark} nextcloud ANSIBLE MANAGED"
+
 - name: Template docker-compose configuration
   template:
     src: "templates/docker-compose.yml.j2"

@@ -21,6 +21,8 @@
       tags: setup
     - role: sylvainmetayer.workstation.commons
       tags: setup
+    - role: restic
+      tags: backup
     - role: sylvainmetayer.workstation.hostname
       tags: setup
       become: true

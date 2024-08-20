@@ -55,7 +55,7 @@ services:
     ## https://docs.photoprism.app/getting-started/config-options/
     environment:
       PHOTOPRISM_DEFAULT_LOCALE: "fr"
-      PHOTOPRISM_DISABLE_RESTART: "true"
+      PHOTOPRISM_DISABLE_RESTART: "false"
       PHOTOPRISM_ADMIN_USER: "{{ photoprism_admin_user }}"                 # admin login username
       PHOTOPRISM_ADMIN_PASSWORD: "{{ photoprism_admin_password }}"          # initial admin password (8-72 characters)
       PHOTOPRISM_AUTH_MODE: "password"               # authentication mode (public, password)
@@ -75,14 +75,14 @@ services:
       PHOTOPRISM_DISABLE_FACES: "false"              # disables face detection and recognition (requires TensorFlow)
       PHOTOPRISM_DISABLE_CLASSIFICATION: "false"     # disables image classification (requires TensorFlow)
       PHOTOPRISM_DISABLE_VECTORS: "false"            # disables vector graphics support
-      PHOTOPRISM_DISABLE_RAW: "true"                # disables indexing and conversion of RAW images
+      PHOTOPRISM_DISABLE_RAW: "false"                # disables indexing and conversion of RAW images
       PHOTOPRISM_RAW_PRESETS: "false"                # enables applying user presets when converting RAW images (reduces performance)
       PHOTOPRISM_SIDECAR_YAML: "true"                # creates YAML sidecar files to back up picture metadata
       PHOTOPRISM_BACKUP_ALBUMS: "true"               # creates YAML files to back up album metadata
       PHOTOPRISM_BACKUP_DATABASE: "true"             # creates regular backups based on the configured schedule
-      PHOTOPRISM_BACKUP_SCHEDULE: "weekly"            # backup SCHEDULE in cron format (e.g. "0 12 * * *" for daily at noon) or at a random time (daily, weekly)
-      PHOTOPRISM_INDEX_SCHEDULE: ""                  # indexing SCHEDULE in cron format (e.g. "@every 3h" for every 3 hours; "" to disable)
-      PHOTOPRISM_AUTO_INDEX: 300                     # delay before automatically indexing files in SECONDS when uploading via WebDAV (-1 to disable)
+      PHOTOPRISM_BACKUP_SCHEDULE: "daily"            # backup SCHEDULE in cron format (e.g. "0 12 * * *" for daily at noon) or at a random time (daily, weekly)
+      PHOTOPRISM_INDEX_SCHEDULE: "@every 12h"        # indexing SCHEDULE in cron format (e.g. "@every 3h" for every 3 hours; "" to disable)
+      PHOTOPRISM_AUTO_INDEX: -1                     # delay before automatically indexing files in SECONDS when uploading via WebDAV (-1 to disable)
       PHOTOPRISM_AUTO_IMPORT: -1                     # delay before automatically importing files in SECONDS when uploading via WebDAV (-1 to disable)
       PHOTOPRISM_DETECT_NSFW: "true"                # automatically flags photos as private that MAY be offensive (requires TensorFlow)
       PHOTOPRISM_UPLOAD_NSFW: "true"                 # allow uploads that MAY be offensive
@@ -93,7 +93,7 @@ services:
       PHOTOPRISM_DATABASE_PASSWORD: "{{ photoprism_db_password }}"       # MariaDB database user password
       PHOTOPRISM_SITE_CAPTION: "Photos"
       PHOTOPRISM_SITE_DESCRIPTION: ""                # meta site description
-      PHOTOPRISM_SITE_AUTHOR: ""                     # meta site author
+      PHOTOPRISM_SITE_AUTHOR: "Sylvain METAYER"                     # meta site author
       ## Video Transcoding (https://docs.photoprism.app/getting-started/advanced/transcoding/):
       # PHOTOPRISM_FFMPEG_ENCODER: "software"        # H.264/AVC encoder (software, intel, nvidia, apple, raspberry, or vaapi)
       # PHOTOPRISM_FFMPEG_SIZE: "1920"               # video size limit in pixels (720-7680) (default: 3840)
@@ -110,8 +110,9 @@ services:
     #  - "/dev/video11:/dev/video11" # Video4Linux Video Encode Device (h264_v4l2m2m)
     working_dir: "/photoprism" # do not change or remove
     volumes:
-      - "./originals:/photoprism/originals:ro" # Only rclone script can edit.
-      - "./storage:/photoprism/storage"                  # *Writable* storage folder for cache, database, and sidecar files (DO NOT REMOVE)
+      - "{{ rclone_base_path }}/Common\ documents/Top\ nous/Photos/:/photoprism/originals/top_nous:ro" # Only rclone script can edit.
+      - "{{ rclone_base_path }}/Shared/Photos/:/photoprism/originals/perso:ro" # Only rclone script can edit.
+      - "./storage:/photoprism/storage"
 
   mariadb:
     image: arm64v8/mariadb:11 # ARM64 IMAGE ONLY, DOES NOT WORK ON ARMv7, AMD or Intel
