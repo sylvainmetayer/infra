@@ -3,7 +3,15 @@ resource "ovh_domain_zone_record" "nextcloud" {
   subdomain = ""
   fieldtype = "A"
   ttl       = 300
-  target    = hcloud_server.nextcloud.ipv4_address
+  target    = hcloud_server.services.ipv4_address
+}
+
+resource "ovh_domain_zone_record" "wiki" {
+  zone      = "sylvain.cloud"
+  subdomain = "wiki"
+  fieldtype = "A"
+  ttl       = 300
+  target    = hcloud_server.services.ipv4_address
 }
 
 data "http" "home_ip" {

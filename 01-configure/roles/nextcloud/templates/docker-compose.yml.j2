@@ -1,7 +1,8 @@
 ---
 services:
   nextcloud:
-    image: lscr.io/linuxserver/nextcloud:version-29.0.5
+    restart: unless-stopped
+    image: lscr.io/linuxserver/nextcloud:version-29.0.6
     container_name: nextcloud
     environment:
       - PUID={{ ansible_user_uid }}
@@ -29,6 +30,7 @@ services:
       - ./db_data:/var/lib/mysql
 
   cache:
+    restart: unless-stopped
     image: redis:bookworm
     container_name: redis
     command: redis-server --requirepass {{ nextcloud_redis_password }}

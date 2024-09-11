@@ -1,16 +1,16 @@
 ---
-- name: Copy nextcloud service
+- name: Copy wiki service
   template:
-    src: ./templates/nextcloud.service.j2
-    dest: ~/.config/systemd/user/nextcloud.service
+    src: ./templates/wiki.service.j2
+    dest: ~/.config/systemd/user/wiki.service
     group: "{{ ansible_user_gid }}"
     owner: "{{ ansible_user_uid }}"
     mode: "0644"
 
-- name: Make sure nextcloud service is running
+- name: Make sure wiki service is running
   ansible.builtin.systemd:
     state: started
     daemon_reload: true
-    name: nextcloud
+    name: wiki
     scope: user
     enabled: true

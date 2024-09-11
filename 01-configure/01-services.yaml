@@ -33,6 +33,8 @@
       tags: setup
     - role: nextcloud
       tags: app
+    - role: wiki
+      tags: app
     - role: geerlingguy.certbot
       become: true
       tags: app
