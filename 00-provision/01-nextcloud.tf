@@ -1,4 +1,9 @@
-resource "hcloud_server" "nextcloud" {
+moved {
+  from = hcloud_server.nextcloud
+  to   = hcloud_server.services
+}
+
+resource "hcloud_server" "services" {
   labels      = local.labels
   name        = "finch"
   image       = "debian-11"
