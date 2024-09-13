@@ -1,0 +1,7 @@
+---
+betisier_base_path: /opt/betisier
+betisier_domain: betisier.sylvain.dev
+betisier_local_port: 9004
+betisier_db_password: ""
+betisier_healthcheck_url: ""
+betisier_reset_healthcheck_url: ""

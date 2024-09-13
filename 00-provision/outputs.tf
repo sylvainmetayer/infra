@@ -6,6 +6,9 @@ output "healthcheck_ids" {
     wiki: healthchecksio_check.wiki_backup.ping_url
     rss: healthchecksio_check.rss_backup.ping_url
     monica_v4: healthchecksio_check.monica_v4_backup.ping_url
+    monica_v4_cron: healthchecksio_check.monica_v4_cron.ping_url
+    betisier: healthchecksio_check.betisier_backup.ping_url
+    betisier_reset: healthchecksio_check.betisier_reset.ping_url
   }
 }
 

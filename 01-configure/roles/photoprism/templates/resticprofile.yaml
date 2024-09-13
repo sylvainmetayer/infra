@@ -15,12 +15,15 @@ photoprism:
     keep-monthly: 5
     keep-yearly: 2
   backup:
+    schedule-lock-mode: fail
+    retry-lock: 2m
+    schedule-lock-wait: 1h
     option:
       - s3.storage-class=ONEZONE_IA
     run-before:
       - curl {{ photoprism_healthcheck_url }}/start
       - docker compose -f /opt/photoprism/docker-compose.yml exec -T photoprism sh -c "photoprism backup storage/dump.sql -f"
-      - docker compose -f /opt/wiki/docker-compose.yml exec -T photoprism sh -c 'chown {{ ansible_user_uid }}:{{ ansible_user_gid }} /opt/photoprism/storage/backup/mysql/*.sql'
+      - docker compose -f /opt/photoprism/docker-compose.yml exec -T photoprism sh -c 'chown {{ ansible_user_uid }}:{{ ansible_user_gid }} /photoprism/storage/backup/mysql/*.sql'
     run-after:
       - curl {{ photoprism_healthcheck_url }}/0
     run-after-fail:

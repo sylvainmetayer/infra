@@ -1,0 +1,16 @@
+---
+- name: Copy betisier service
+  template:
+    src: ./templates/betisier.service.j2
+    dest: ~/.config/systemd/user/betisier.service
+    group: "{{ ansible_user_gid }}"
+    owner: "{{ ansible_user_uid }}"
+    mode: "0644"
+
+- name: Make sure betisier service is running
+  ansible.builtin.systemd:
+    state: started
+    daemon_reload: true
+    name: betisier
+    scope: user
+    enabled: true
