@@ -37,6 +37,8 @@
       tags: app
     - role: rss
       tags: app
+    - role: monica_v4
+      tags: app
     - role: geerlingguy.certbot
       become: true
       tags: app
