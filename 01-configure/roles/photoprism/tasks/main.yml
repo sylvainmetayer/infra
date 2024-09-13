@@ -9,7 +9,6 @@
     group: "{{ ansible_user_gid }}"
   with_items:
     - "{{ photoprism_base_path }}"
-    - "{{ photoprism_base_path }}/originals"
 
 - name: Add restic profile
   tags: backup

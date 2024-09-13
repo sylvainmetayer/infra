@@ -1,10 +1,8 @@
 ---
-version: '3.4'
-
 services:
   freshrss:
     image: ghcr.io/linuxserver/freshrss:1.19.2
-    container_name: freshrss
+    container_name: rss
     environment:
       - PUID={{ ansible_user_uid }}
       - PGID={{ ansible_user_gid }}
@@ -17,3 +15,20 @@ services:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
     restart: 'on-failure'
+
+  rss_db:
+    image: lscr.io/linuxserver/mariadb
+    container_name: rss_db
+    environment:
+      - PUID={{ ansible_user_uid }}
+      - PGID={{ ansible_user_gid }}
+      - TZ=Europe/Paris
+      - MYSQL_ROOT_PASSWORD={{ rss_db_password }}
+      - MYSQL_DATABASE=rss
+      - MYSQL_USER=rss
+      - MYSQL_PASSWORD={{ rss_db_password }}
+    volumes:
+      - ./db_data:/config
+      # tmp
+      - ~/rss.sql:/config/initdb.d/rss.sql:ro
+    restart: unless-stopped

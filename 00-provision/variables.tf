@@ -15,6 +15,12 @@ variable "scaleway_provider_secret_key" {
   sensitive = true
 }
 
+variable "gandi_pat" {
+  type      = string
+  nullable  = false
+  sensitive = true
+}
+
 variable "healthchecks_io_api_key" {
   type      = string
   nullable  = false

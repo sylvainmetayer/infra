@@ -4,6 +4,7 @@ output "healthcheck_ids" {
     photoprism: healthchecksio_check.photoprism_backup.ping_url
     signal: healthchecksio_check.signal_backup.ping_url
     wiki: healthchecksio_check.wiki_backup.ping_url
+    rss: healthchecksio_check.rss_backup.ping_url
   }
 }
 
@@ -15,16 +16,5 @@ output "backup_api_key" {
     bucket_endpoint : scaleway_object_bucket.backup.api_endpoint
     bucket : scaleway_object_bucket.backup.name
     bucket_region : scaleway_object_bucket.backup.region
-  }
-}
-
-output "wiki_api_key" {
-  sensitive = true
-  value = {
-    access_key : scaleway_iam_api_key.wiki.access_key
-    secret_key : scaleway_iam_api_key.wiki.secret_key
-    bucket_endpoint : scaleway_object_bucket.wiki.api_endpoint
-    bucket : scaleway_object_bucket.wiki.name
-    bucket_region : scaleway_object_bucket.wiki.region
   }
 }
