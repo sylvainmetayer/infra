@@ -5,6 +5,7 @@ output "healthcheck_ids" {
     signal: healthchecksio_check.signal_backup.ping_url
     wiki: healthchecksio_check.wiki_backup.ping_url
     rss: healthchecksio_check.rss_backup.ping_url
+    monica_v4: healthchecksio_check.monica_v4_backup.ping_url
   }
 }
 

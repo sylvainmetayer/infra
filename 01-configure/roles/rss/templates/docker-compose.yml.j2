@@ -29,6 +29,4 @@ services:
       - MYSQL_PASSWORD={{ rss_db_password }}
     volumes:
       - ./db_data:/config
-      # tmp
-      - ~/rss.sql:/config/initdb.d/rss.sql:ro
     restart: unless-stopped
