@@ -9,10 +9,8 @@
 
 - name: Make sure rss service is running
   ansible.builtin.systemd:
-    # state: started
-    state: stopped
+    state: started
     daemon_reload: true
     name: rss
     scope: user
-    # enabled: true
-    enabled: false
+    enabled: true

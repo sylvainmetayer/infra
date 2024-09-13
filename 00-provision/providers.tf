@@ -26,6 +26,10 @@ terraform {
       source  = "scaleway/scaleway"
       version = "<3.0.0"
     }
+    gandi = {
+      source  = "go-gandi/gandi"
+      version = "<3.0.0"
+    }
   }
   required_version = ">= 1.6"
 }

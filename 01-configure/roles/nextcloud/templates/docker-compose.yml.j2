@@ -2,7 +2,7 @@
 services:
   nextcloud:
     restart: unless-stopped
-    image: lscr.io/linuxserver/nextcloud:version-29.0.6
+    image: lscr.io/linuxserver/nextcloud:version-29.0.7
     container_name: nextcloud
     environment:
       - PUID={{ ansible_user_uid }}

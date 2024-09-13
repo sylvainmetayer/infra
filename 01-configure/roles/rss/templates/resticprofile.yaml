@@ -1,8 +1,9 @@
 # $schema: ../../../schema/resticprofile.json
 # https://creativeprojects.github.io/resticprofile/jsonschema/config-1.json
 
-photoprism:
-  lock: "/tmp/resticprofile-profile-photoprism.lock"
+rss:
+  lock: "/tmp/resticprofile-profile-rss.lock"
+  status-file: backup-rss-status.json
   repository: "s3:{{ restic_s3_endpoint }}"
   password-file: "~/.restic.password.txt"
   env:
@@ -18,23 +19,21 @@ photoprism:
     option:
       - s3.storage-class=ONEZONE_IA
     run-before:
-      - curl {{ photoprism_healthcheck_url }}/start
-      - docker compose -f /opt/photoprism/docker-compose.yml exec -T photoprism sh -c "photoprism backup storage/dump.sql -f"
-      - docker compose -f /opt/wiki/docker-compose.yml exec -T photoprism sh -c 'chown {{ ansible_user_uid }}:{{ ansible_user_gid }} /opt/photoprism/storage/backup/mysql/*.sql'
+      - curl {{ rss_healthcheck_url }}/start
+      - docker compose -f /opt/rss/docker-compose.yml exec -T rss_db sh -c 'mariadb-dump -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE' > /opt/rss/dump.sql
     run-after:
-      - curl {{ photoprism_healthcheck_url }}/0
+      - curl {{ rss_healthcheck_url }}/0
     run-after-fail:
-      - curl {{ photoprism_healthcheck_url }}/fail
+      - curl {{ rss_healthcheck_url }}/fail
     schedule: "03:00"
     verbose: 2
     tag:
-      - RaspberryPi
-      - photoprism
+      - hetzner
+      - rss
     source:
-      - "/opt/photoprism/docker-compose.yml"
-      - "/opt/photoprism/storage"
-    exclude:
-      - cache/cmd/*
+      - "/opt/rss/docker-compose.yml"
+      - "/opt/rss/config"
+      - "/opt/rss/dump.sql"
 
   forget:
     keep-daily: 7
@@ -58,7 +57,7 @@ photoprism:
     schedule-permission: user
     schedule-lock-wait: 1h
 
-  description: Backup Photoprism {{ photoprism_domain }}
+  description: Backup RSS {{ rss_domain }}
 
   verbose: true
   cleanup-cache: true

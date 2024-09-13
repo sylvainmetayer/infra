@@ -35,6 +35,8 @@
       tags: app
     - role: wiki
       tags: app
+    - role: rss
+      tags: app
     - role: geerlingguy.certbot
       become: true
       tags: app

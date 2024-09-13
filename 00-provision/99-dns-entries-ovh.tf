@@ -14,6 +14,14 @@ resource "ovh_domain_zone_record" "wiki" {
   target    = hcloud_server.services.ipv4_address
 }
 
+resource "ovh_domain_zone_record" "rss" {
+  zone      = "sylvain.cloud"
+  subdomain = "rss"
+  fieldtype = "A"
+  ttl       = 300
+  target    = hcloud_server.services.ipv4_address
+}
+
 data "http" "home_ip" {
   url = "https://ipv4.icanhazip.com"
 }

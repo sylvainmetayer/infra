@@ -12,3 +12,7 @@ provider "scaleway" {
 provider "healthchecksio" {
   api_key = var.healthchecks_io_api_key
 }
+
+provider "gandi" {
+  personal_access_token = var.gandi_pat
+}
