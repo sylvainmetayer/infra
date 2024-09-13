@@ -23,6 +23,4 @@ services:
       - MYSQL_PASSWORD={{ monica_v4_db_password }}
     volumes:
       - ./db_data:/config
-      # tmp
-      - ~/monica.sql:/config/initdb.d/monica.sql:ro
     restart: unless-stopped

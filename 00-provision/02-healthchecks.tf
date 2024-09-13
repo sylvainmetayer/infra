@@ -66,12 +66,62 @@ resource "healthchecksio_check" "rss_backup" {
   ]
 }
 
+resource "healthchecksio_check" "betisier_backup" {
+  name = "Betisier Backup"
+  desc = "Ensure backup of Betisier did run at least once per day."
+
+  tags = [
+    "backup",
+    "betisier",
+    "hetzner"
+  ]
+
+  timeout = 24 * 3600
+  grace   = 3600
+  channels = [
+    data.healthchecksio_channel.signal.id
+  ]
+}
+
+resource "healthchecksio_check" "betisier_reset" {
+  name = "Betisier Reset"
+  desc = "Ensure Betisier is reset each day"
+
+  tags = [
+    "betisier",
+    "hetzner"
+  ]
+
+  timeout = 24 * 3600
+  grace   = 3600
+  channels = [
+    data.healthchecksio_channel.signal.id
+  ]
+}
+
+resource "healthchecksio_check" "monica_v4_cron" {
+  name = "Monica v4 CRON"
+  desc = "Ensure monica v4 cron run at least once per hour"
+
+  tags = [
+    "monica_v4",
+    "hetzner"
+  ]
+
+  timeout = 1800
+  grace   = 3600
+  channels = [
+    data.healthchecksio_channel.signal.id
+  ]
+}
+
 resource "healthchecksio_check" "monica_v4_backup" {
   name = "monica_v4 Backup"
   desc = "Ensure backup of monica_v4 did run at least once per day."
 
   tags = [
     "backup",
+    "monica_v4",
     "hetzner"
   ]
 

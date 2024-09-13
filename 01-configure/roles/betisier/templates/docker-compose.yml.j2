@@ -1,0 +1,30 @@
+---
+services:
+  betisier:
+    container_name: betisier
+    image: ghcr.io/sylvainmetayer/betisier-tp:latest
+    environment:
+      - PUID={{ ansible_user_uid }}
+      - PGID={{ ansible_user_gid }}
+      - TZ=Europe/Paris
+    ports:
+      - 127.0.0.1:{{ betisier_local_port }}:80
+    volumes:
+      - ./config:/config
+    restart: unless-stopped
+
+  betisier_db:
+    image: lscr.io/linuxserver/mariadb
+    container_name: betisier_db
+    environment:
+      - PUID={{ ansible_user_uid }}
+      - PGID={{ ansible_user_gid }}
+      - TZ=Europe/Paris
+      - MYSQL_ROOT_PASSWORD={{ betisier_db_password }}
+      - MYSQL_DATABASE=betisier
+      - MYSQL_USER=betisier
+      - MYSQL_PASSWORD={{ betisier_db_password }}
+    volumes:
+      # No DB volume, since we want to reset database on restart
+      - ./dump.sql:/config/initdb.d/betisier.sql:ro
+    restart: unless-stopped

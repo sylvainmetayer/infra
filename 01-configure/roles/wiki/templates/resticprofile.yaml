@@ -16,14 +16,17 @@ wiki:
     keep-monthly: 5
     keep-yearly: 2
   backup:
+    schedule-lock-mode: fail
+    retry-lock: 2m
+    schedule-lock-wait: 1h
     option:
       - s3.storage-class=ONEZONE_IA
     run-before:
       - curl {{ wiki_healthcheck_url }}/start
-      - echo "Call CLI BACKUP"
       - rm -f /opt/wiki/config/backups/backup.zip || true
       - docker compose -f /opt/wiki/docker-compose.yml exec -T bookstack sh -c '/app/www/bookstack-system-cli backup /app/www/storage/backups/backup.zip'
       - docker compose -f /opt/wiki/docker-compose.yml exec -T bookstack sh -c 'chown {{ ansible_user_uid }}:{{ ansible_user_gid }} /app/www/storage/backups/backup.zip'
+      - docker compose -f /opt/wiki/docker-compose.yml exec -T bookstack sh -c 'chmod 644 /config/log/logrotate.status'
     run-after:
       - curl {{ wiki_healthcheck_url }}/0
     run-after-fail:

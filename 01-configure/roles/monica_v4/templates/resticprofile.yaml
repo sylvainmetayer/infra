@@ -16,6 +16,9 @@ monica_v4:
     keep-monthly: 5
     keep-yearly: 2
   backup:
+    schedule-lock-mode: fail
+    retry-lock: 2m
+    schedule-lock-wait: 1h
     option:
       - s3.storage-class=ONEZONE_IA
     run-before:
