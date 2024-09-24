@@ -39,6 +39,9 @@ betisier:
       - "/opt/betisier/dump.sql"
 
   forget:
+    schedule-lock-mode: fail
+    retry-lock: 2m
+    schedule-lock-wait: 1h
     keep-daily: 1
     keep-weekly: 1
     keep-monthly: 1
@@ -46,19 +49,22 @@ betisier:
     prune: true
     schedule: "05:00"
     schedule-permission: user
-    schedule-lock-wait: 1h
 
   prune:
+    schedule-lock-mode: fail
+    retry-lock: 2m
+    schedule-lock-wait: 1h
     schedule:
       - "sun 3:30"
     schedule-permission: user
-    schedule-lock-wait: 1h
 
   # Verify command
   check:
+    schedule-lock-mode: fail
+    retry-lock: 2m
+    schedule-lock-wait: 1h
     schedule: "06:00"
     schedule-permission: user
-    schedule-lock-wait: 1h
 
   description: Backup Betisier {{ betisier_domain }}
 

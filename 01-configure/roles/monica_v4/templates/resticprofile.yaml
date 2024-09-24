@@ -44,6 +44,9 @@ monica_v4:
       - "{{ monica_v4_base_path }}/.env"
 
   forget:
+    schedule-lock-mode: fail
+    retry-lock: 2m
+    schedule-lock-wait: 1h
     keep-daily: 7
     keep-weekly: 8
     keep-monthly: 12
@@ -51,19 +54,22 @@ monica_v4:
     prune: true
     schedule: "05:00"
     schedule-permission: user
-    schedule-lock-wait: 1h
 
   prune:
+    schedule-lock-mode: fail
+    retry-lock: 2m
+    schedule-lock-wait: 1h
     schedule:
       - "sun 3:30"
     schedule-permission: user
-    schedule-lock-wait: 1h
 
   # Verify command
   check:
+    schedule-lock-mode: fail
+    retry-lock: 2m
+    schedule-lock-wait: 1h
     schedule: "06:00"
     schedule-permission: user
-    schedule-lock-wait: 1h
 
   description: Backup Monica V4 {{ monica_v4_domain }}
 

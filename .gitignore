@@ -54,4 +54,4 @@ vault.secret
 
 *.iml
 wip/
-01-configure/resticprofile.json
+01-configure/schema/resticprofile.json
