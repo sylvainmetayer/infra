@@ -9,3 +9,7 @@ swap_config:
   CONF_SWAPFILE: /var/swap
   CONF_MAXSWAP: 4096
   # CONF_SWAPFACTOR: 2
+
+# Fix because pi4 os name is detected as unknown-linux-gnu otherwise
+starship_os_map:
+  Linux: unknown-linux-musl

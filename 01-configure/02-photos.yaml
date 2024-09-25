@@ -31,9 +31,11 @@
     - role: devsec.hardening.ssh_hardening
       tags: setup
       become: true
-#    - role: andrewrothstein.starship
-#      tags: setup
-
+    - role: sudo_with_ssh_agent
+      become: true
+      tags: ssh
+    - role: andrewrothstein.starship
+      tags: setup,starship
     - role: escalate.swap
       become: true
       tags: app

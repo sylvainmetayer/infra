@@ -29,6 +29,9 @@
     - role: devsec.hardening.ssh_hardening
       tags: setup
       become: true
+    - role: sudo_with_ssh_agent
+      become: true
+      tags: ssh
     - role: andrewrothstein.starship
       tags: setup
     - role: nextcloud
