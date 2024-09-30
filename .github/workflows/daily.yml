@@ -6,17 +6,10 @@ on:
 name: "Daily"
 
 jobs:
-  checkAsdfUpdatesTerraform:
+  checkAsdfUpdatesOpentofu:
     name: "ASDF Update terraform"
 
     uses: ./.github/workflows/part_asdf_update.yml
     with:
-      plugin: "terraform"
+      plugin: "opentofu"
       constraint: "1"
-
-  checkAsdfUpdatesDirenv:
-    name: "ASDF Update direnv"
-
-    uses: ./.github/workflows/part_asdf_update.yml
-    with:
-      plugin: "direnv"
