@@ -10,7 +10,7 @@ wiki:
     AWS_ACCESS_KEY_ID: "{{ restic_access_key }}"
     AWS_SECRET_ACCESS_KEY: "{{ restic_secret_key }}"
   retention:
-    after-backup: true
+    after-backup: false
     keep-daily: 2
     keep-weekly: 7
     keep-monthly: 5
