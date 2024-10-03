@@ -1,9 +1,23 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":pinDevDependencies",
+    "docker:pinDigests",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "assignees": [
+    "sylvainmetayer"
+  ],
+  "addLabels": [
+    "dependencies"
   ],
   "docker-compose": {
+    "digest": {
+      "pin": {
+        "enabled": true
+      }
+    },
     "fileMatch": [
       "(^|/)(?:docker-)?compose[^/]*\\.ya?ml$",
       "(^|/)(?:docker-)?compose[^/]*\\.ya?ml\\.j2$"
