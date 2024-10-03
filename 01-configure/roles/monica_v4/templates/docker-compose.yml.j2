@@ -2,7 +2,7 @@
 services:
   crm:
     container_name: monica_v4
-    image: monica:3.7.0-apache
+    image: monica:4.1.2-apache@sha256:2bf37a98c9c36e7e9b3df0af1fdf5e3ba0437d346fe4de344dd7bd9d867cc3e5
     env_file: .env
     ports:
       - 127.0.0.1:{{ monica_v4_local_port }}:80
