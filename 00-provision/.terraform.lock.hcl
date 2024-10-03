@@ -64,7 +64,19 @@ provider "registry.opentofu.org/kristofferahl/healthchecksio" {
   version     = "2.0.0"
   constraints = "< 3.0.0"
   hashes = [
+    "h1:7l1EXRVvInsQEtZ6aWoCYd7nfD3M4Z4Tid3SA/S9fSI=",
+    "h1:BeNlj2iFXh6xa+2TB1SPlBMgDzsib6Gv7AOBk7ZScho=",
+    "h1:CNBf+38IiYUPAw97sd0PEYu+qDNBaNPbwVtYTYeQCWI=",
     "h1:IpH+groXbNbsZLWjs/U68Itkumqu0J8DQXTIg7tzYWY=",
+    "h1:RhuIKDjiVzgNJ3wvARrScypbqn+Oo1Zuiil0nanPCkg=",
+    "h1:Si1M5mkNVy18gN5jfldZ8b8WiCTmrNSvTIT3oCtrALY=",
+    "h1:St6cAWCKFsWvjuMmtG25xRliiCMHjT2E4nghTPzle1k=",
+    "h1:aV5qUncU3avGxqNkgG1e+WCs/HfC8iXeMAx3YaSpIhQ=",
+    "h1:aVpsuH9OaC8SqX417oGTbYhIHVpvntFCNszHskil1F4=",
+    "h1:jXiDRPwNTcpY+AZcP+Sh5FGs06Ae4ngYMeevl8NfjW0=",
+    "h1:k3R9rcNrt9e1gJN2+So8LKrbhfUOa46pedeeU9/nP0g=",
+    "h1:lWTt9ddSe3U6rhOGmGWRfiZVqUXSlprAOR1T8/P/pwo=",
+    "h1:oIlc/fiEW/56aHe1ekm8wJg0FVM9nscIbNMlbImeGvk=",
     "zh:08380a6868a40713d3f6ca92ffe333d3f027a6c0151e055c9da200514f4f1618",
     "zh:0d30f043bf83a5a4449434c167b7cfb4acca36f3e2b26dbdec11734304beb495",
     "zh:17fb11ee0e71f13c3d0109805541b78cd280a39dcebd21919853db39073b29c8",
