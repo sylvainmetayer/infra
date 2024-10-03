@@ -1,7 +1,7 @@
 ---
 services:
   freshrss:
-    image: ghcr.io/linuxserver/freshrss:1.19.2
+    image: ghcr.io/linuxserver/freshrss:1.19.2@sha256:1e0dc74cc89db3abf7ae4c891809996a53b46beb7e4025fcc2438f3a262703a3
     container_name: rss
     environment:
       - PUID={{ ansible_user_uid }}

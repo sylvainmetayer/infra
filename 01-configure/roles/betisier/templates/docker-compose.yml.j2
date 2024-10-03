@@ -2,7 +2,7 @@
 services:
   betisier:
     container_name: betisier
-    image: ghcr.io/sylvainmetayer/betisier-tp:latest
+    image: ghcr.io/sylvainmetayer/betisier-tp:latest@sha256:083bdcae175dbbe2d131d0b1fd60ff4d77004f124c671033db478a90e542ad00
     environment:
       - PUID={{ ansible_user_uid }}
       - PGID={{ ansible_user_gid }}
@@ -14,7 +14,7 @@ services:
     restart: unless-stopped
 
   betisier_db:
-    image: lscr.io/linuxserver/mariadb
+    image: lscr.io/linuxserver/mariadb@sha256:a2bd0d13da8294acd4e264fdbe6abd513ef6443391ef9756a55dc7d0a8039060
     container_name: betisier_db
     environment:
       - PUID={{ ansible_user_uid }}

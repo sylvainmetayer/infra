@@ -23,9 +23,9 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
       - name: ASDF Install
-        uses: asdf-vm/actions/install@v1
+        uses: asdf-vm/actions/install@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1
       - name: "Get Newest Version"
         id: newestVersion
         run: |

@@ -35,7 +35,7 @@
 services:
   photoprism:
     ## Use photoprism/photoprism:preview-arm64 for testing preview builds:
-    image: photoprism/photoprism:arm64
+    image: photoprism/photoprism:arm64@sha256:a556813b076241660605e35b79d2859925b6168192dd1b5072c7288499240951
     platform: "linux/arm64"
     ## Don't enable automatic restarts until PhotoPrism has been properly configured and tested!
     ## If the service gets stuck in a restart loop, this points to a memory, filesystem, network, or database issue:
@@ -115,7 +115,7 @@ services:
       - "./storage:/photoprism/storage"
 
   mariadb:
-    image: arm64v8/mariadb:11 # ARM64 IMAGE ONLY, DOES NOT WORK ON ARMv7, AMD or Intel
+    image: arm64v8/mariadb:11@sha256:bbd1aff8c84c1289a77b5ef81500b29e7b2e4a56b6ee3b1bcb73730c6be1e8ee # ARM64 IMAGE ONLY, DOES NOT WORK ON ARMv7, AMD or Intel
     platform: "linux/arm64"
     ## If MariaDB gets stuck in a restart loop, this points to a memory or filesystem issue:
     ## https://docs.photoprism.app/getting-started/troubleshooting/#fatal-server-errors

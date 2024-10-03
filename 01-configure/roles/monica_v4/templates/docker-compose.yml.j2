@@ -2,7 +2,7 @@
 services:
   crm:
     container_name: monica_v4
-    image: monica:3.7.0-apache
+    image: monica:3.7.0-apache@sha256:ceb1ba4196ab2d371f504f284f4516174f4b99fe9339f2aa69a86c31d6ba414f
     env_file: .env
     ports:
       - 127.0.0.1:{{ monica_v4_local_port }}:80
@@ -11,7 +11,7 @@ services:
     restart: unless-stopped
 
   monica_v4_db:
-    image: lscr.io/linuxserver/mariadb
+    image: lscr.io/linuxserver/mariadb@sha256:a2bd0d13da8294acd4e264fdbe6abd513ef6443391ef9756a55dc7d0a8039060
     container_name: monica_v4_db
     environment:
       - PUID={{ ansible_user_uid }}
