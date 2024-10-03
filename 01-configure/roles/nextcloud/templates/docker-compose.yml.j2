@@ -2,7 +2,7 @@
 services:
   nextcloud:
     restart: unless-stopped
-    image: lscr.io/linuxserver/nextcloud:version-29.0.7
+    image: lscr.io/linuxserver/nextcloud:version-29.0.7@sha256:7e1eb6d87cff416f5c83d104125518ecbb07c801b731782d9d02028d121b94e2
     container_name: nextcloud
     environment:
       - PUID={{ ansible_user_uid }}
@@ -20,7 +20,7 @@ services:
   db:
     container_name: db
     restart: unless-stopped
-    image: mariadb:lts
+    image: mariadb:lts@sha256:7d3fd2f513cc2a5edad3a6aed2d7154ab1503ee3c3362bb54d8cb6112959b4f2
     environment:
       MYSQL_ROOT_PASSWORD: {{ nextcloud_db_password }}
       MYSQL_DATABASE: nextcloud
@@ -31,7 +31,7 @@ services:
 
   cache:
     restart: unless-stopped
-    image: redis:bookworm
+    image: redis:bookworm@sha256:6725a7dc7a44a6486b9d0a5172b10ccaf0c2ea600df87c0b93450d0e7769297f
     container_name: redis
     command: redis-server --requirepass {{ nextcloud_redis_password }}
     environment:

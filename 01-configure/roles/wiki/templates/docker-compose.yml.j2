@@ -1,7 +1,7 @@
 ---
 services:
   bookstack:
-    image: lscr.io/linuxserver/bookstack:24.05.4
+    image: lscr.io/linuxserver/bookstack:24.05.4@sha256:aee741f9dea201ff619cf2f1560bafa66f4d5ca3c5c39421b4ffdf7438138fad
     container_name: bookstack
     environment:
       - PUID={{ ansible_user_uid }}
@@ -22,7 +22,7 @@ services:
       - bookstack_db
 
   bookstack_db:
-    image: lscr.io/linuxserver/mariadb
+    image: lscr.io/linuxserver/mariadb@sha256:a2bd0d13da8294acd4e264fdbe6abd513ef6443391ef9756a55dc7d0a8039060
     container_name: bookstack_db
     environment:
       - PUID={{ ansible_user_uid }}
