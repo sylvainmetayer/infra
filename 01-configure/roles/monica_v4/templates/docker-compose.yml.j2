@@ -11,7 +11,7 @@ services:
     restart: unless-stopped
 
   monica_v4_db:
-    image: lscr.io/linuxserver/mariadb@sha256:a2bd0d13da8294acd4e264fdbe6abd513ef6443391ef9756a55dc7d0a8039060
+    image: lscr.io/linuxserver/mariadb@sha256:336907b0ff5bf17b26e6e1aa4bfe39c0cfedc9c3b34e79e4bdec50a908273a56
     container_name: monica_v4_db
     environment:
       - PUID={{ ansible_user_uid }}
