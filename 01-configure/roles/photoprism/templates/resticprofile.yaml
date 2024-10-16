@@ -23,7 +23,8 @@ photoprism:
     run-before:
       - curl {{ photoprism_healthcheck_url }}/start
       - docker compose -f /opt/photoprism/docker-compose.yml exec -T photoprism sh -c "photoprism backup storage/dump.sql -f"
-      - docker compose -f /opt/photoprism/docker-compose.yml exec -T photoprism sh -c 'chown {{ ansible_user_uid }}:{{ ansible_user_gid }} /photoprism/storage/backup/mysql/*.sql'
+      - docker compose -f /opt/photoprism/docker-compose.yml exec -T photoprism sh -c 'chown {{ ansible_user_uid }}:{{ ansible_user_gid }} /photoprism/storage/dump.sql'
+      - docker compose -f /opt/photoprism/docker-compose.yml exec -T photoprism sh -c 'chown -R {{ ansible_user_uid }}:{{ ansible_user_gid }} /photoprism/storage/backup/'
     run-after:
       - curl {{ photoprism_healthcheck_url }}/0
     run-after-fail:
