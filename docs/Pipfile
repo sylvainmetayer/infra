@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-diagrams = "==0.24.0"
+diagrams = "==0.24.1"
 
 [dev-packages]
 
