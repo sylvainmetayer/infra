@@ -14,7 +14,7 @@ services:
     restart: unless-stopped
 
   betisier_db:
-    image: lscr.io/linuxserver/mariadb@sha256:1c789fa45286f473d6dba9d9e6ae6fc415427764680620ff2fff641ef73d19f7
+    image: lscr.io/linuxserver/mariadb@sha256:d073999ecb35c97cc4f2ef62e17af59d736ded312b87c74db6990ad2336da2d0
     container_name: betisier_db
     environment:
       - PUID={{ ansible_user_uid }}
