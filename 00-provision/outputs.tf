@@ -22,3 +22,14 @@ output "backup_api_key" {
     bucket_region : scaleway_object_bucket.backup.region
   }
 }
+
+output "notes_api_key" {
+  sensitive = true
+  value = {
+    access_key : scaleway_iam_api_key.notes.access_key
+    secret_key : scaleway_iam_api_key.notes.secret_key
+    bucket_endpoint : scaleway_object_bucket.notes.api_endpoint
+    bucket : scaleway_object_bucket.notes.name
+    bucket_region : scaleway_object_bucket.notes.region
+  }
+}
