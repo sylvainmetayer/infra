@@ -20,7 +20,7 @@ services:
   db:
     container_name: db
     restart: unless-stopped
-    image: mariadb:lts@sha256:e3432369d4d432ec2a3d777ff84ffca11ec8c2188cf1b6a0551a393ae5d833bb
+    image: mariadb:lts@sha256:5dfb3093333fa0ea53194ddef0a2bfa21d3b1e1353bd228b22610cd6fc0c04da
     environment:
       MYSQL_ROOT_PASSWORD: {{ nextcloud_db_password }}
       MYSQL_DATABASE: nextcloud
