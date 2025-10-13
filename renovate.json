@@ -18,15 +18,19 @@
         "enabled": true
       }
     },
-    "fileMatch": [
-      "(^|/)(?:docker-)?compose[^/]*\\.ya?ml$",
-      "(^|/)(?:docker-)?compose[^/]*\\.ya?ml\\.j2$"
+    "managerFilePatterns": [
+      "/(^|/)(?:docker-)?compose[^/]*\\.ya?ml$/",
+      "/(^|/)(?:docker-)?compose[^/]*\\.ya?ml\\.j2$/"
     ]
   },
   "packageRules": [
     {
-      "matchPackageNames": ["/monica/"],
-      "matchManagers": ["docker-compose"],
+      "matchPackageNames": [
+        "/monica/"
+      ],
+      "matchManagers": [
+        "docker-compose"
+      ],
       "enabled": false
     }
   ]
