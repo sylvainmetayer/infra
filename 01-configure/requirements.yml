@@ -10,7 +10,7 @@ roles:
   - src: geerlingguy.certbot
     version: 5.2.0
   - src: escalate.swap
-    version: v2.0.0
+    version: v2.1.0
   - src: geerlingguy.docker
     version: 7.4.3
   - src: andrewrothstein.starship
