@@ -17,7 +17,7 @@ services:
     restart: 'on-failure'
 
   rss_db:
-    image: lscr.io/linuxserver/mariadb
+    image: lscr.io/linuxserver/mariadb@sha256:caa3b6d9165a7bd44f7247dbb703aa8bc99988dea469983b73397f3cc0adb6ea
     container_name: rss_db
     environment:
       - PUID={{ ansible_user_uid }}
