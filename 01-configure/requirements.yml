@@ -12,6 +12,6 @@ roles:
   - src: escalate.swap
     version: v2.1.0
   - src: geerlingguy.docker
-    version: 7.6.0
+    version: 7.9.0
   - src: andrewrothstein.starship
     version: v1.2.4
