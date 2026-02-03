@@ -31,7 +31,7 @@ services:
 
   cache:
     restart: unless-stopped
-    image: redis:bookworm@sha256:a06cea905344470eb49c972f3d030e22f28f632c1b4f43bbe4a26a4329dd6be5
+    image: redis:bookworm@sha256:c22af04bb576503bf16b3e34a1fd2fd82de0f765afd866d2e380145e0af30d78
     container_name: redis
     command: redis-server --requirepass {{ nextcloud_redis_password }}
     environment:
