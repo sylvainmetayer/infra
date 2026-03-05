@@ -24,7 +24,7 @@ terraform {
     }
     scaleway = {
       source  = "scaleway/scaleway"
-      version = "<3.0.0"
+      version = "< 3.0.0"
     }
     gandi = {
       source  = "go-gandi/gandi"
